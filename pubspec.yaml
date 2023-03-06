@@ -1,0 +1,157 @@
+name: fixerking
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  # sdk: ">=2.12.0 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  sizer: ^2.0.15
+  font_awesome_flutter: ^9.2.0
+  animated_widgets: ^1.1.0
+  page_transition: ^2.0.4
+  http: ^0.13.0
+  shared_preferences: any
+  fluttertoast: ^8.0.8
+  intl: ^0.17.0
+  mobile_number: ^1.0.4
+  location: ^4.1.1
+#  place_picker: ^0.9.19
+  custom_switch: ^0.0.1
+  google_maps_place_picker_mb: ^3.0.0
+  google_maps_flutter: ^2.2.3
+  flutter_rating_bar: ^4.0.0
+  dotted_border: ^2.0.0+2
+  image_picker: ^0.7.4
+  image_picker_gallery_camera: ^0.2.2
+  connectivity: ^3.0.6
+  flutter_local_notifications: ^9.0.0
+  path_provider: ^2.0.2
+  permission_handler: ^10.0.2
+  firebase_core: ^1.24.0
+  time_picker_sheet: ^0.0.2+1
+  firebase_auth: ^3.3.5
+  carousel_slider: ^4.0.0
+  cloud_firestore: ^3.5.0
+  # firebase_storage: ^10.3.10
+  dotted_line:
+  uuid: ^3.0.6
+  flutter_image_slideshow: ^0.1.0
+  # google_sign_in: ^5.2.3
+  image_cropper: ^3.0.1
+  otp_text_field: ^1.1.3
+  geolocator: ^9.0.2
+  # http_parser: ^4.0.0
+  # location: ^4.3.0
+  # geocoder: ^0.2.1
+  cached_network_image: ^3.2.0
+  dropdown_button2: ^1.4.0
+  path: any
+  animated_splash_screen: ^1.2.0
+  file_picker: ^5.2.0+1
+  firebase_messaging: ^13.0.4
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  shimmer: ^2.0.0
+  logger: ^1.1.0
+  flutter_staggered_animations: ^1.0.0
+  flutter_native_image:
+#  razorpay_flutter: ^1.3.3
+  curved_navigation_bar: ^1.0.3
+  pinput: ^2.2.16
+  flutter_launcher_icons: ^0.11.0
+  geocoding: ^2.0.5
+  google_fonts: ^3.0.1
+  share_plus: ^6.3.0
+  loading_animation_widget: ^1.2.0+4
+  url_launcher: ^6.1.7
+  flutter_share: ^2.0.0
+  animation_wrappers: ^3.0.0
+  provider: ^6.0.5
+  flutter_polyline_points: ^1.0.0
+  flutter_bloc: ^8.1.1
+#  geocoder: ^0.2.1
+  awesome_notifications: ^0.6.21
+  equatable: ^2.0.5
+  animated_text_kit: ^4.2.2
+  geocode: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/launcher_icon.png"
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/
+    - images/icons/
+  #    - lang/en.json
+  #    - lang/hi.json
+    - images/Getstarted.png
+    - images/Splashscreen.png
+    - images/auth1.png
+    - images/auth2.png
+
+  fonts:
+    - family: Andina
+      fonts:
+        - asset: fonts/andina.ttf
+
+    - family: Regular
+      fonts:
+        - asset: fonts/googlesansregular.ttf
+
+    - family: Medium
+      fonts:
+        - asset: fonts/googlesansmedium.ttf
+
+    - family: Semibold
+      fonts:
+        - asset: fonts/googlesansmedium.ttf
+
+    - family: Bold
+      fonts:
+        - asset: fonts/googlesansebold.ttf
