@@ -11,6 +11,7 @@ import 'package:fixerking/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
@@ -22,6 +23,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../new model/cities_model.dart';
@@ -76,14 +78,34 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
           pickLong = result.first.coordinates.longitude;
           addressController.text = address;
         });
+        print("this is address ${result.first.addressLine}");
       // }
     });
     location.getLoc();
     print("this is current location --->>> ${addressController.text.toString()}");
   }
 
-  void _showMultiSelect() async {
+  _getAddressFromLatLng() async {
+    getUserCurrentLocation().then((_) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      try {
+        List<Placemark> p = await placemarkFromCoordinates(
+            currentLocation!.latitude, currentLocation!.longitude);
 
+        Placemark place = p[0];
+
+        setState(() {
+          addressController.text =
+          "${place.street}, ${place.subLocality}, ${place.locality}, ${place.country}";
+        });
+        print("this is address ${addressController.text.toString()}");
+      } catch (e) {
+        print(e);
+      }
+    });
+  }
+
+  void _showMultiSelect() async {
     final List? results = await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -107,7 +129,6 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
       print("this is result == ${_selectedItems.toString()} aaaaand ${selectedCategoryItems.toString()} &&&&&& ${selectCatItems.toString()}");
     }
   }
-
 
   TextEditingController nameController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
@@ -968,8 +989,9 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
     _getCities();
     _getEventCategory();
     getLocation();
+    _getAddressFromLatLng();
      // getLocation();
-    // getUserCurrentLocation();
+    getUserCurrentLocation();
   }
 
 
@@ -1391,8 +1413,8 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
                     MaterialPageRoute(
                       builder: (context) => PlacePicker(
                         apiKey: Platform.isAndroid
-                            ? "AIzaSyAyCVwen-zImEz1B1IKmS_Il3nY8UMBsh4"
-                            : "AIzaSyAyCVwen-zImEz1B1IKmS_Il3nY8UMBsh4",
+                            ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                            : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
                         onPlacePicked: (result) {
                           print(result.formattedAddress);
                           setState(() {

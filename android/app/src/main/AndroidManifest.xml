@@ -12,7 +12,7 @@
         android:label="SOD Vendor"
         android:icon="@mipmap/launcher_icon">
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyAyCVwen-zImEz1B1IKmS_Il3nY8UMBsh4"/>
+           android:value="AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"/>
 
         <activity
             android:name="MainActivity"

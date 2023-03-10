@@ -107,7 +107,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           snapshot.data!.notifications![i]);
                                     },
                                     child: Container(
-                                        height: 11.40.h,
+                                        // height: 11.40.h,
                                         width: 82.91.w,
                                         decoration: BoxDecoration(
                                           // showShadow: true,
@@ -175,7 +175,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                       fontSize: 10.sp,
                                                       overFlow: true,
                                                       fontFamily: fontRegular,
-                                                      maxLine: 2,
+                                                      maxLine: 3,
                                                     ),
                                                   ),
                                                 ],
