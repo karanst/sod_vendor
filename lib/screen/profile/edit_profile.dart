@@ -778,31 +778,39 @@ class _EditNewProfileState extends State<EditNewProfile> {
   }
 
   void requestPermission(BuildContext context,int i) async{
-    if (await Permission.camera.isPermanentlyDenied||await Permission.storage.isPermanentlyDenied) {
+    var status = await Permission.storage.request();
+    // final status = await Permission.photos.status;
+    if(status.isGranted){
+      getImage(ImgSource.Both, context,i);
+    }
+    else if(status.isPermanentlyDenied){
       openAppSettings();
     }
-    else{
-      Map<Permission, PermissionStatus> statuses = await [
-        Permission.camera,
-        Permission.storage,
-      ].request();
-// You can request multiple permissions at once.
-
-      if(statuses[Permission.camera]==PermissionStatus.granted&&statuses[Permission.storage]==PermissionStatus.granted){
-        getImage(ImgSource.Both, context,i);
-
-      }else{
-        if (await Permission.camera.isDenied||await Permission.storage.isDenied) {
-
-          // The user opted to never again see the permission request dialog for this
-          // app. The only way to change the permission's status now is to let the
-          // user manually enable it in the system settings.
-          openAppSettings();
-        }else{
-          setSnackbar("Oops you just denied the permission", context);
-        }
-      }
-    }
+//     if (await Permission.camera.isPermanentlyDenied||await Permission.storage.isPermanentlyDenied) {
+//       openAppSettings();
+//     }
+//     else{
+//       Map<Permission, PermissionStatus> statuses = await [
+//         Permission.camera,
+//         Permission.storage,
+//       ].request();
+// // You can request multiple permissions at once.
+//
+//       if(statuses[Permission.camera]==PermissionStatus.granted&&statuses[Permission.storage]==PermissionStatus.granted){
+//         getImage(ImgSource.Both, context,i);
+//
+//       }else{
+//         if (await Permission.camera.isDenied||await Permission.storage.isDenied) {
+//
+//           // The user opted to never again see the permission request dialog for this
+//           // app. The only way to change the permission's status now is to let the
+//           // user manually enable it in the system settings.
+//           openAppSettings();
+//         }else{
+//           setSnackbar("Oops you just denied the permission", context);
+//         }
+//       }
+//     }
 
   }
   Future getImage(ImgSource source, BuildContext context,int i) async {
@@ -814,6 +822,7 @@ class _EditNewProfileState extends State<EditNewProfile> {
         color: Colors.red,
       ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
     );
+
     getCropImage(context, i, image);
   }
   void getCropImage(BuildContext context,int i,var image) async {

@@ -373,7 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  cardWidget(GetVendorOrderModel model, int i) {
+  Widget cardWidget(GetVendorOrderModel model, int i) {
     return InkWell(
       onTap: () {
         Navigator.push(

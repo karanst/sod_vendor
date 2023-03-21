@@ -71,6 +71,7 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
   getLocation() {
     print("current location initiated ----->>>");
     GetLocation location = new GetLocation((result) {
+      print("this is current location result $result");
       // if (mounted) {
         setState(() {
          String address = result.first.addressLine;
@@ -468,8 +469,8 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
       borderRadius: BorderRadius.circular(15),
       child: InkWell(
         onTap: () {
-          getImage(ImgSource.Both, context,1);
-          // requestPermission(context, 1);
+          // getImage(ImgSource.Both, context,1);
+          requestPermission(context, 1);
           //uploadAadharFromCamOrGallary(context);
         },
         child: Center(
@@ -755,11 +756,15 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
   }
   void requestPermission(BuildContext context,int i) async{
     var status = await Permission.storage.request();
+    // final status = await Permission.photos.status;
     if(status.isGranted){
       getImage(ImgSource.Both, context,i);
-    } else if(status.isPermanentlyDenied){
+    }
+    else if(status.isPermanentlyDenied){
       openAppSettings();
     }
+
+    ///
 //     if (await Permission.camera.isRestricted || await Permission.storage.isRestricted) {
 //       openAppSettings();
 //     }
@@ -988,9 +993,9 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
     manageRole();
     _getCities();
     _getEventCategory();
-    getLocation();
+    // getLocation();
     _getAddressFromLatLng();
-     // getLocation();
+     getLocation();
     getUserCurrentLocation();
   }
 
