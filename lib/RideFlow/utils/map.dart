@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:fixerking/RideFlow/Theme/style.dart';
+// import 'package:fixerking/RideFlow/Theme/style.dart';
+import 'package:fixerking/RideFlow/utils/colors.dart';
 import 'package:fixerking/RideFlow/utils/constant.dart';
 import 'package:fixerking/RideFlow/utils/location_details.dart';
 import 'package:flutter/material.dart';
@@ -296,7 +297,7 @@ class MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin{
       Polyline polyline = Polyline(
         width: 5,
           polylineId: PolylineId("poly2"),
-          color: AppTheme.primaryColor,
+          color: MyColorName.primaryDark,
           points: polylineCoordinates);
       // add the constructed polyline as a set of points
       // to the polyline set, which will eventually

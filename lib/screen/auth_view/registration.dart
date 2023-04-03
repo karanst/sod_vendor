@@ -913,12 +913,13 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
   // }
 
   _getCities() async {
-    var uri = Uri.parse('${Apipath.getCitiesUrl}');
+    var uri = Uri.parse(
+        //'https://developmentalphawizz.com/SOD_New/api/get_cities');
+        '${Apipath.getCitiesUrl}');
     var request = new http.MultipartRequest("GET", uri);
     Map<String, String> headers = {
       "Accept": "application/json",
     };
-    // print(baseUrl.toString());
 
     request.headers.addAll(headers);
     // request.fields['type_id'] = "1";
@@ -926,7 +927,7 @@ class _VendorRegisterationState extends State<VendorRegisteration> {
     var response = await request.send();
     print(response.statusCode);
     String responseData = await response.stream.transform(utf8.decoder).join();
-    var userData = json.decode(responseData);
+    var userData = jsonDecode(responseData);
 
     if (mounted) {
       setState(() {

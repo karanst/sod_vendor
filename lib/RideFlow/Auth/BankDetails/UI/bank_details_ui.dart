@@ -8,9 +8,6 @@ import 'package:fixerking/RideFlow/utils/Session.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-
-
-import '../../../DrawerPages/Home/offline_page.dart';
 import '../../../Model/UpdateBankDetailModel.dart';
 import '../../../Provider/UserProvider.dart';
 
@@ -52,10 +49,10 @@ class _BankDetailsUIState extends State<BankDetailsUI> {
           _accNumberController.text,
           _bankCodeController.text);
       if (model!.status == true) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => OfflinePage("")),
-            (route) => false);
+        // Navigator.pushAndRemoveUntil(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => OfflinePage("")),
+        //     (route) => false);
 
         // widget.bankDetailsInteractor.addBank();
 

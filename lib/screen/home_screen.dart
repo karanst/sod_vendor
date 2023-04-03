@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:fixerking/RideFlow/DrawerPages/Rides/ride_info_page.dart';
 import 'package:fixerking/api/api_path.dart';
 import 'package:fixerking/modal/response/notification_response.dart';
 import 'package:fixerking/new%20model/GetProfileModel.dart';
@@ -35,6 +34,7 @@ import 'package:fixerking/screen/manage_Service.dart';
 import 'package:fixerking/screen/notification_screen.dart';
 import 'package:fixerking/screen/push_notification_service.dart';
 import 'package:fixerking/token/token_string.dart';
+import 'package:fixerking/utils/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
@@ -2367,6 +2367,50 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               ListTile(
+                // leading: Icon(Icons.list),
+                leading: Icon(
+                  Icons.delete_forever,
+                  color: AppColor().colorBg1(),
+                  size: 24,
+                ),
+                // leading: const ImageIcon(AssetImage("assets/Icons/About us.png")),
+                title: const Text('Delete Account',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500)),
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Delete Account"),
+                          content: Text("Are you sure you want to delete your account?"),
+                          actions: <Widget>[
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: AppColor().colorPrimary()),
+                              child: Text("YES"),
+                              onPressed: () async {
+                                accountDelete();
+                              },
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: AppColor().colorPrimary()),
+                              child: Text("NO"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            )
+                          ],
+                        );
+                      });
+
+                },
+              ),
+              ListTile(
                 // leading: Icon(Icons.security),
                 leading: Image.asset(
                   "images/icons/security.png",
@@ -2806,6 +2850,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String? userName;
   String? userPic;
   String? wallet;
+  String? mobileNo;
   String? onOfStatus;
   String? approvalStatus;
   String? userImage;
@@ -2895,6 +2940,7 @@ class _HomeScreenState extends State<HomeScreen> {
       uName = result.data![0].uname;
       userImage = result.data![0].profileImage;
       wallet = result.data![0].wallet.toString();
+      mobileNo = result.data![0].mobile.toString();
       prefs.setString(TokenString.walletBalance, wallet.toString());
       print("this is approval status ====>>> ${approvalStatus.toString()}");
       if (approvalStatus == "0") {
@@ -2910,6 +2956,56 @@ class _HomeScreenState extends State<HomeScreen> {
       print("this is approval status ====>>> ${approvalStatus.toString()}");
 
       return GetProfileModel.fromJson(json.decode(str));
+    } else {
+      return null;
+    }
+  }
+
+  accountDelete() async {
+    var headers = {
+      'Cookie': 'ci_session=3ab2e0bfe4c2535c351d13c7ca58f780dce6aa8f'
+    };
+    var request =
+    http.MultipartRequest('POST', Uri.parse('${Apipath.accountDelete}'));
+    request.fields.addAll({
+      'mobile': '${mobileNo.toString()}'
+    });
+    print("this is request =====>>>>> ${request.fields.toString()}");
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      print("this response @@ ${response.statusCode}");
+      final str = await response.stream.bytesToString();
+      var result= json.decode(str);
+      if(result['response_code'] == "1"){
+        setSnackBar("${result['msg']}");
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Login()));
+      }else{
+        setSnackBar("${result['msg']}");
+      }
+      // var result = GetProfileModel.fromJson(json.decode(str));
+      // approvalStatus = result.data![0].status;
+      // uName = result.data![0].uname;
+      // userImage = result.data![0].profileImage;
+      // wallet = result.data![0].wallet.toString();
+      // prefs.setString(TokenString.walletBalance, wallet.toString());
+      // print("this is approval status ====>>> ${approvalStatus.toString()}");
+      // if (approvalStatus == "0") {
+      //   setState(() {
+      //     isSwitched = false;
+      //   });
+      // } else {
+      //   setState(() {
+      //     isSwitched = true;
+      //   });
+      // }
+      // // prefs.setString(TokenString.approvalStatus, approvalStatus!);
+      // print("this is approval status ====>>> ${approvalStatus.toString()}");
+      //
+      // return GetProfileModel.fromJson(json.decode(str));
     } else {
       return null;
     }

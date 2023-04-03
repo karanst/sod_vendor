@@ -1,8 +1,8 @@
 class Apipath {
 
   static const String BASH_URL =
-      //"https://sodindia.com/api/";
-      "https://developmentalphawizz.com/SOD_New/api/";
+      "https://sodindia.com/api/";
+      // "https://developmentalphawizz.com/SOD_New/api/";
       //"https://developmentalphawizz.com/new_ondemand/api/";
       //"https://alphawizztest.tk/ondemand/api/";
       static const String imagePath =
@@ -54,7 +54,7 @@ class Apipath {
   static const String verifyOtpUrl = BASH_URL + 'v_verify_otp';
   static const String email_login = BASH_URL + 'vendor_login';
   static const String getProfileApi = BASH_URL + 'get_v_res';
-
+  static const String accountDelete = BASH_URL + 'account_delete';
 
   static const String getVendorProducts = BASH_URL +'get_vendor_products';
   static const String getServicesUrl = BASH_URL +'get_vendor_services';

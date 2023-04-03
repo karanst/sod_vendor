@@ -15,61 +15,46 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SOD vendor</string>
+	<string>SOD Vendor</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>io.flutter.embedded_views_preview</key>
-    <string>YES</string>
-    <key>CFBundleShortVersionString</key>
-    <string>1.0.0</string>
-    <key>CFBundleSignature</key>
-    <string>????</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-    	<dict>
-    		<key>CFBundleTypeRole</key>
-    		<string>Editor</string>
-    		<key>CFBundleURLName</key>
-    		<string>Bundle id</string>
-    		<key>CFBundleURLSchemes</key>
-    		<array>
-    			<string>com.app.entemarket</string>
-    		</array>
-    	</dict>
-    </array>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Bundle id</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.sod.vendor</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UISupportedInterfaceOrientations</key>
-    <dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
-	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) Need Camera Access.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires access to Location of user to get nearby vendors</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires access to Location of user to to show you nearby points of interest</string>
+	<string>This app requires Camera Access to upload profile image and other required documents</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>This app needs access to your location to show you nearby points of interest, even when the app is not in use.</string>
+	<string>Always and when in use!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires access to Location of vendor to provide nearby services</string>
+	<key>NSLocationUsageDescription</key>
+	<string>This app requires access to Location of vendor to provide nearby services</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires access to Location of vendor to provide nearby services</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This require listens for speech on the device microphone on your request for voice search.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>this require to get profile picture</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>This require recognizes words as you speak them and displays them for voice search </string>
+	<string>This app requires Camera Access to upload profile image and other required documents</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -94,5 +79,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>io.flutter.embedded_views_preview</key>
+	<string>YES</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>
